@@ -205,6 +205,26 @@ nav .inner {
 footer { border-top: 1px solid rgba(255,255,255,0.14); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 footer span { font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-dark); }
 
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 100;
+  background: rgba(15,15,15,0.92); align-items: center; justify-content: center;
+  padding: 24px;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw; max-height: 90vh;
+  width: auto; height: auto;
+  object-fit: contain; box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+}
+.lightbox-close {
+  position: fixed; top: 20px; right: 24px;
+  font-family: 'Space Mono', monospace; font-size: 13px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--paper); background: none; border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 14px; cursor: pointer; transition: border-color 0.15s;
+}
+.lightbox-close:hover { border-color: var(--paper); }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   :root { --gutter: 16px; }
@@ -229,6 +249,12 @@ footer span { font-family: 'Space Mono', monospace; font-size: 10px; text-transf
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose">Close ✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
 
 <!-- NAV -->
 <nav>
@@ -474,7 +500,7 @@ const SKILLS = [
     const certs = CERTS.filter(c => c.issuer === issuer.id);
     const idx = String(i + 1).padStart(2, '0');
     const cards = certs.map(c => `
-      <article class="cert-card">
+      <article class="cert-card" data-img="${c.img}" data-title="${c.title}">
         <div class="cert-thumb">
           <img src="${c.img}" alt="${c.title}" loading="lazy" onerror="this.style.display='none'">
           <span class="cert-thumb-label">Certificate</span>
@@ -522,6 +548,35 @@ const SKILLS = [
       <div class="skill-chips">${g.chips.map(c => `<span class="skill-chip">${c}</span>`).join('')}</div>
     </div>
   `).join('');
+})();
+
+/* ── LIGHTBOX ── */
+(function() {
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+
+  function open(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  document.getElementById('cert-blocks').addEventListener('click', function(e) {
+    const card = e.target.closest('.cert-card');
+    if (!card) return;
+    open(card.dataset.img, card.dataset.title);
+  });
+
+  lbClose.addEventListener('click', close);
+  lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
 })();
 </script>
 </body>
