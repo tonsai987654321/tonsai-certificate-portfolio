@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonsai Threetan — Automation Engineer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.4;
+    color: #1a1a1a;
+    background: #f0f0f0;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    background: #fff;
+    padding: 14mm 16mm 14mm 16mm;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-bottom: 2.5px solid #1e3a5f;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #1e3a5f;
+    text-transform: uppercase;
+  }
+  .header .title {
+    font-size: 10pt;
+    font-weight: 500;
+    color: #3a6ea8;
+    letter-spacing: 1px;
+    margin: 2px 0 5px;
+    text-transform: uppercase;
+  }
+  .header .contact {
+    font-size: 8.5pt;
+    color: #444;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .header .contact span { display: flex; align-items: center; gap: 4px; }
+
+  /* ── TWO-COLUMN LAYOUT ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 62% 35%;
+    gap: 0 14px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 9px; }
+  .section-title {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1e3a5f;
+    border-bottom: 1px solid #b0c4de;
+    padding-bottom: 2px;
+    margin-bottom: 6px;
+  }
+
+  /* ── PROFILE ── */
+  .profile p {
+    font-size: 8.8pt;
+    line-height: 1.5;
+    color: #2c2c2c;
+  }
+  .profile strong { color: #1e3a5f; }
+
+  /* ── EXPERIENCE ── */
+  .job { margin-bottom: 8px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-company { font-size: 9pt; font-weight: 700; color: #1e3a5f; }
+  .job-date { font-size: 7.8pt; color: #666; white-space: nowrap; }
+  .job-title { font-size: 8.8pt; font-weight: 600; color: #2c2c2c; margin: 1px 0 3px; }
+  .job ul { padding-left: 12px; list-style: disc; }
+  .job ul li {
+    font-size: 8.5pt;
+    line-height: 1.45;
+    margin-bottom: 1.5px;
+    color: #2c2c2c;
+  }
+  .highlight { color: #1e3a5f; font-weight: 600; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { border-left: 1px solid #dce8f5; padding-left: 12px; }
+
+  /* ── SKILLS ── */
+  .skill-group { margin-bottom: 6px; }
+  .skill-group-label {
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: #3a6ea8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+  .skill-tag {
+    background: #e8f0fb;
+    color: #1e3a5f;
+    font-size: 7.5pt;
+    font-weight: 500;
+    border-radius: 3px;
+    padding: 1px 5px;
+  }
+
+  /* ── PROJECTS ── */
+  .project { margin-bottom: 7px; }
+  .project-name { font-size: 8.8pt; font-weight: 700; color: #1e3a5f; }
+  .project-status {
+    display: inline-block;
+    font-size: 7pt;
+    background: #fff3cd;
+    color: #856404;
+    border-radius: 3px;
+    padding: 0 4px;
+    margin-left: 4px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .project-status.complete {
+    background: #d1f0d1;
+    color: #1a6e1a;
+  }
+  .project-desc { font-size: 8.3pt; color: #2c2c2c; margin: 2px 0; line-height: 1.4; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .project-tag {
+    background: #f0f4ff;
+    color: #3a6ea8;
+    font-size: 7pt;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-weight: 500;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item { margin-bottom: 5px; }
+  .edu-school { font-size: 8.8pt; font-weight: 700; color: #1e3a5f; }
+  .edu-detail { font-size: 8pt; color: #444; }
+
+  /* ── CERTS ── */
+  .cert-list { list-style: none; padding: 0; }
+  .cert-list li {
+    font-size: 7.8pt;
+    color: #2c2c2c;
+    padding: 1px 0;
+    padding-left: 8px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .cert-list li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: #3a6ea8;
+    font-weight: 700;
+  }
+
+  /* ── PAGE BREAK ── */
+  .page-break { page-break-after: always; }
+
+  @media print {
+    body { background: none; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+      width: 100%;
+      padding: 14mm 16mm;
+    }
+    .page:last-child { page-break-after: avoid; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ PAGE 1 ══════════════════════════════ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Tonsai Threetan</h1>
+    <div class="title">Automation Engineer</div>
+    <div class="contact">
+      <span>(+66) 089 770 3251</span>
+      <span>|</span>
+      <span>tonsai.email@gmail.com</span>
+      <span>|</span>
+      <span>github.com/tonsai987654321</span>
+      <span>|</span>
+      <span>linkedin.com/in/tonsai-threetan</span>
+    </div>
+  </div>
+
+  <!-- BODY GRID -->
+  <div class="body-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="main">
+
+      <!-- PROFILE -->
+      <div class="section profile">
+        <div class="section-title">Profile</div>
+        <p>Automation Engineer with <strong>2+ years</strong> of hands-on automation experience across AI, chatbot, and web systems. Built automated test suites using <strong>Robot Framework</strong> and <strong>Playwright</strong> that cut execution time by <strong>89%</strong> (90 min → 10 min per 100 test rounds). Skilled in writing test plans from requirements, designing test cases for happy/bad/off-topic paths, and coordinating quality across sprint cycles. Leverages LLM tools (Claude Code, GitHub Copilot) to accelerate test script generation and debugging.</p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">Experience</div>
+
+        <!-- PM Role -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Botnoi Group Co., Ltd.</span>
+            <span class="job-date">Aug 2024 – Present</span>
+          </div>
+          <div class="job-title">Project Manager</div>
+          <ul>
+            <li>Owned test planning end-to-end: defined test scope, wrote acceptance criteria from business requirements, coordinated UAT with stakeholders, and tracked defects in <span class="highlight">Jira</span>.</li>
+            <li>Used <span class="highlight">Robot Framework</span> for automated regression testing and <span class="highlight">Pywinauto</span> for desktop automation, ensuring quality across AI-powered product releases.</li>
+            <li>Translated complex business requirements into clear test specifications, reducing rework and resolving functional ambiguities before development began.</li>
+            <li>Served as primary QA liaison between developers, clients, and stakeholders — triaging bugs and verifying release readiness across sprint cycles.</li>
+            <li>Engineered reusable <span class="highlight">AI skills for Claude, Gemini, and Codex</span> — enabling models to autonomously generate test cases, validate chatbot flows, and produce QA documentation from plain-language requirements.</li>
+          </ul>
+        </div>
+
+        <!-- Chatbot Expert -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Botnoi Group Co., Ltd.</span>
+            <span class="job-date">Apr 2024 – Present</span>
+          </div>
+          <div class="job-title">Chatbot QA / Journey Expert</div>
+          <ul>
+            <li><span class="highlight">Automated LLM chatbot testing</span> to detect and mitigate hallucinations by simulating repetitive conversation scenarios at scale.</li>
+            <li><span class="highlight">Reduced test execution time by 89%</span> — from 90 minutes to 10 minutes per 100 test rounds — while maintaining full coverage of response quality.</li>
+            <li>Designed test scenarios covering happy path, bad path, and off-topic handling for complex chatbot conversation flows.</li>
+            <li>Analyzed chatbot performance and user behavior data to identify quality issues and drive continuous UX improvements.</li>
+          </ul>
+        </div>
+
+      </div><!-- /section -->
+    </div><!-- /main -->
+
+    <!-- RIGHT COLUMN (SIDEBAR) -->
+    <div class="sidebar">
+
+      <!-- SKILLS -->
+      <div class="section">
+        <div class="section-title">Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Test Automation</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Robot Framework</span>
+            <span class="skill-tag">Playwright</span>
+            <span class="skill-tag">Pywinauto</span>
+            <span class="skill-tag">pytest</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI / LLM Testing</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Hallucination detection</span>
+            <span class="skill-tag">NLU validation</span>
+            <span class="skill-tag">LLM evaluation</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Dart</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Tools & Platforms</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">Dialogflow ES/CX</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">N8N</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI-Assisted Development</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Claude (Claude Code)</span>
+            <span class="skill-tag">GitHub Copilot</span>
+            <span class="skill-tag">Codex</span>
+            <span class="skill-tag">Gemini</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI Skill Engineering</div>
+          <div class="skill-tags">
+            <span class="skill-tag">LLM skill design</span>
+            <span class="skill-tag">Test case generation</span>
+            <span class="skill-tag">Chatbot flow automation</span>
+            <span class="skill-tag">Prompt engineering</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Methodology</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Agile/Scrum</span>
+            <span class="skill-tag">Test case design</span>
+            <span class="skill-tag">Defect tracking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-school">Burapha University</div>
+          <div class="edu-detail">B.Sc. Mathematics · 2019 – 2022</div>
+        </div>
+      </div>
+
+      <!-- KEY ACHIEVEMENT -->
+      <div class="section">
+        <div class="section-title">Key Achievement</div>
+        <div style="background:#e8f0fb; border-left:3px solid #1e3a5f; padding:7px 8px; border-radius:3px;">
+          <div style="font-size:8.3pt; color:#1e3a5f; font-weight:700; margin-bottom:2px;">89% Faster Test Execution</div>
+          <div style="font-size:8pt; color:#2c2c2c; line-height:1.4;">Reduced chatbot regression testing from <strong>90 min → 10 min</strong> per 100 rounds using Python automation while maintaining full coverage.</div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /body-grid -->
+</div><!-- /page 1 -->
+
+
+<!-- ══════════════════════════════ PAGE 2 ══════════════════════════════ -->
+<div class="page">
+
+  <div class="body-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="main">
+
+      <!-- CONTINUED EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">Experience (continued)</div>
+
+        <!-- Technical Support -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Botnoi Group Co., Ltd.</span>
+            <span class="job-date">Apr 2023 – Apr 2024</span>
+          </div>
+          <div class="job-title">Technical Support / QA</div>
+          <ul>
+            <li>Executed comprehensive manual and exploratory testing for <span class="highlight">Dialogflow ES/CX</span> voice bot flows, validating intent recognition accuracy before production deployment.</li>
+            <li>Developed <span class="highlight">Python-based automation tools</span> for test data preparation and cleaning, reducing setup time for test runs.</li>
+            <li>Built a Python PoC to automate MongoDB scaling — reducing scale-down latency from 24 hours to real-time, cutting estimated costs by ~$83/month per instance.</li>
+            <li>Managed defect tracking and developer coordination via <span class="highlight">Jira</span> and Slack across multiple voice bot projects.</li>
+          </ul>
+        </div>
+
+        <!-- Internship -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Freewill Solutions Co., Ltd.</span>
+            <span class="job-date">Apr 2022 – Oct 2022</span>
+          </div>
+          <div class="job-title">Software Developer Intern (Co-op)</div>
+          <ul>
+            <li>Performed manual testing on mobile application flows built with Flutter, identifying and documenting UI/UX defects prior to release.</li>
+            <li>Developed and shipped a cross-platform <span class="highlight">mobile application using Flutter</span> (Dart), implementing UI screens, navigation, and integration with backend APIs.</li>
+            <li>Gathered functional requirements and translated them into test scenarios covering core user journeys.</li>
+            <li>Contributed to UX design reviews using Figma, providing quality feedback before development handoff.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO PROJECTS -->
+      <div class="section">
+        <div class="section-title">Portfolio Projects</div>
+
+        <div class="project">
+          <div class="project-name">1. Playwright E2E Test Suite <span class="project-status complete">Complete</span></div>
+          <div style="font-size:7.5pt; color:#3a6ea8; margin-bottom:2px;">github.com/tonsai987654321/playwright-e2e-tests</div>
+          <div class="project-desc">Web UI automation framework for an e-commerce demo site built with <strong>Playwright + Python</strong> using Page Object Model pattern. <strong>8 tests</strong> across login, browse, cart, and checkout flows. Includes GitHub Actions CI pipeline and Allure HTML reporting.</div>
+          <div class="project-tags">
+            <span class="project-tag">Playwright</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">POM</span>
+            <span class="project-tag">GitHub Actions</span>
+            <span class="project-tag">Allure</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">2. Robot Framework API Test Suite <span class="project-status complete">Complete</span></div>
+          <div style="font-size:7.5pt; color:#3a6ea8; margin-bottom:2px;">github.com/tonsai987654321/robot-api-tests · <a href="https://tonsai987654321.github.io/robot-api-tests/" style="color:#3a6ea8;">Live Report</a></div>
+          <div class="project-desc">Keyword-driven API test suite using <strong>Robot Framework + RequestsLibrary</strong> targeting a public REST API. <strong>15 tests</strong> covering CRUD operations, auth, error handling, and edge cases. Auto-publishes HTML reports to GitHub Pages on every push via CI.</div>
+          <div class="project-tags">
+            <span class="project-tag">Robot Framework</span>
+            <span class="project-tag">REST API</span>
+            <span class="project-tag">RequestsLibrary</span>
+            <span class="project-tag">Keyword-driven</span>
+            <span class="project-tag">GitHub Pages</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">3. LLM Response Quality Evaluator <span class="project-status complete">Complete</span></div>
+          <div style="font-size:7.5pt; color:#3a6ea8; margin-bottom:2px;">github.com/tonsai987654321/llm-quality-evaluator · <a href="https://tonsai987654321.github.io/llm-quality-evaluator/" style="color:#3a6ea8;">Live Report</a></div>
+          <div class="project-desc"><strong>pytest-based framework</strong> that evaluates LLM responses across latency, consistency, and hallucination dimensions using an OpenAI-compatible API. <strong>17 tests</strong> with scoring across 3 quality dimensions. Generates self-contained HTML report published live via GitHub Actions CI.</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">pytest</span>
+            <span class="project-tag">LLM Testing</span>
+            <span class="project-tag">AI Quality</span>
+            <span class="project-tag">HTML Reporting</span>
+            <span class="project-tag">GitHub Pages</span>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /main -->
+
+    <!-- RIGHT COLUMN (SIDEBAR) -->
+    <div class="sidebar">
+
+      <!-- CERTIFICATIONS -->
+      <div class="section">
+        <div class="section-title">Certifications</div>
+
+        <div style="font-size:7.8pt; font-weight:700; color:#3a6ea8; margin-bottom:3px;">Automation & Tech</div>
+        <ul class="cert-list">
+          <li>Google IT Automation with Python <span style="color:#888;">— Coursera</span></li>
+          <li>GitHub for Developer <span style="color:#888;">— BornToDev</span></li>
+          <li>ChatGPT for Developer <span style="color:#888;">— BornToDev</span></li>
+          <li>Google IT Support <span style="color:#888;">— Coursera</span></li>
+        </ul>
+
+        <div style="font-size:7.8pt; font-weight:700; color:#3a6ea8; margin:6px 0 3px;">Data & AI</div>
+        <ul class="cert-list">
+          <li>Google Data Analytics <span style="color:#888;">— Coursera</span></li>
+          <li>Google AI Essentials <span style="color:#888;">— Coursera</span></li>
+          <li>Mini Data Science Bootcamp <span style="color:#888;">— DataRockie</span></li>
+          <li>Certified Professional Data Analyst <span style="color:#888;">— DataRockie</span></li>
+          <li>Data Science Essential #8 <span style="color:#888;">— Botnoi</span></li>
+          <li>Data Science &amp; Applications <span style="color:#888;">— Thai MOOC (CU)</span></li>
+          <li>Gen AI for Project Managers <span style="color:#888;">— PMI</span></li>
+        </ul>
+
+        <div style="font-size:7.8pt; font-weight:700; color:#3a6ea8; margin:6px 0 3px;">Management</div>
+        <ul class="cert-list">
+          <li>Google Project Management <span style="color:#888;">— Coursera</span></li>
+          <li>Google UX Design <span style="color:#888;">— Coursera</span></li>
+        </ul>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="section">
+        <div class="section-title">Languages</div>
+        <ul class="cert-list">
+          <li>Thai — Native</li>
+          <li>English — Professional working proficiency</li>
+        </ul>
+      </div>
+
+      <!-- PORTFOLIO SUMMARY -->
+      <div class="section">
+        <div class="section-title">Portfolio</div>
+        <div style="font-size:8pt; color:#2c2c2c; line-height:1.5;">
+          3 completed open-source projects covering web E2E, API, and AI/LLM testing — each with CI pipelines and published reports.<br><br>
+          <span style="color:#3a6ea8;">github.com/tonsai987654321</span>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /body-grid -->
+</div><!-- /page 2 -->
+
+</body>
+</html>
